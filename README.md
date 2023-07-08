@@ -29,6 +29,16 @@
 * VideoView (Widget): To display video content  from different sources. 
 * MediaController (View): To control the media player.
 
+## French Teacher App
+
+**Description**: App to Learn the colors in  French using Audio Files.
+
+**Android Topics**:
+
+* colors.xml: To define colors in our resources directory. 
+* raw/: To save raw files (audio).
+* Media Player: To control media files in Android Studio. 
+
 ## World Cup App
 
 **Description**: App that displays an interactive custom list of the countries that have won the  World Cup using ListView and  ArrayAdapter
