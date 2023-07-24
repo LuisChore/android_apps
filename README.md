@@ -61,4 +61,25 @@
   * ViewHolder Class
   * Implement Override Methods
  
+## Vaccines App
 
+**Description**:  App that displays an interactive custom list of Vaccines using RecyclerView
+	
+**Android Topics**: 
+
+* RecyclerView: AdapterView to  efficiently display large sets of data, better performance than ListView
+* RecyclerView.Adapter: Adapter that provides a binding from a data set to views that are displayed in a RecyclerView
+
+  
+
+**Steps**:
+
+* Create  in the main_activity.xml an AdapterView (RecyclerView).
+* Create  a custom layout for the items (recyclerview_item).
+* Create  a Custom Model Class to represent each of the items. A template for  the data we will pass (VaccineModel).
+* Create a Custom Adapter that extends RecyclerView.Adapter<CustomAdapter.ViewHolder> (CustomAdapter).
+   * Data source
+   * ViewHolder Class
+   * Implement Override Methods
+
+ 
