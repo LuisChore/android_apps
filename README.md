@@ -82,4 +82,25 @@
    * ViewHolder Class
    * Implement Override Methods
 
- 
+
+## Top Games App
+
+**Description**:  App that displays a list of video games in a CardView application using RecyclerView, each item will be interactive using click events. 
+	
+**Android Topics**: 
+
+* Cardview: Widget to display data in a rounded layout, it can be used as an item in ListView or inside a RecyclerView
+
+  
+
+**Steps**:
+
+* Create  in the main_activity.xml an AdapterView (RecyclerView).
+* Create  a custom layout for the items (card_item, using CardView).
+* Create  a Custom Model Class to represent each of the items. A template for  the data we will pass (GameModel).
+* Create a Custom Adapter to connect our data source with the AdapterVIew. It extends RecyclerView.Adapter<CustomAdapter.ViewHolder> (CustomAdapter).
+   * Data source
+   * ViewHolder Class
+   * Implement Override Methods
+* Add click event (inside the override method ‘onBindViewHolder’ in the CustomAdapter)
+
