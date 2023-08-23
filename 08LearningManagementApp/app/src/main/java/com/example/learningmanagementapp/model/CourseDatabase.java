@@ -25,9 +25,9 @@ public abstract class CourseDatabase extends RoomDatabase {
     // to prevent any creation of other objects
     public static synchronized CourseDatabase getInstance(Context context){
         if(instance == null){
-            instance = Room.databaseBuilder(context.getApplicationContext(),CourseDatabase.class
-                    ,"courses_database").
-                    fallbackToDestructiveMigration().build();
+            instance = Room.databaseBuilder(context.getApplicationContext(),
+                            CourseDatabase.class,"courses_database").
+                    fallbackToDestructiveMigration().addCallback(callback).build();
         }
         return instance;
     }
