@@ -10,7 +10,9 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-/**
+/** Repository
+ * Data Manager, write the business logic combining data, it takes the different data sources
+ * and provide getter methods for ViewModels
  * Recommendations:
  * . For complex projects, have a repository for each entity.
  */
