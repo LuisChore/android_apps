@@ -104,3 +104,63 @@
    * Implement Override Methods
 * Add click event (inside the override method ‘onBindViewHolder’ in the CustomAdapter)
 
+
+## Learning Management App
+
+**Description**: App that displays data from a database and  manages (create, update, delete) a list of courses for each category in a Spinner. App created using the MVVM pattern.
+	
+**Android Topics**: 
+* Room Database: Database, an abstraction layer over SQLite.
+* Repository Pattern:  Design pattern that isolates the data layer from the rest of the app. 
+* ViewModel: It manages the data for the UI. It exposes state to the UI and encapsulates related business logic.
+* LiveData: Observable data holder class, to update UI components when the underlying data changes using the Observer Pattern.
+* Data Binding: To bind UI components in layouts to data sources in your app.
+* Spinner: View used to select one value from a dropdown menu.
+* ItemTouchHelper. Utility to add ‘swipe to dismiss’ or ‘drag & drop’ for the RecyclerView 
+
+#### MVVM steps
+* Model
+  * Room Database 
+    * Entities {Category,Course}
+    * DataAccessObjects {CourseDAO, CategoryDAO}
+    * Database (Singleton Pattern) {CourseDatabase}
+  * Repository {CourseShopRepository}
+* ViewModel 
+  * ViewModelActivity {MainActivityViewModel}
+  * LiveData
+* View
+  * Activities {MainActivity,AddEditActivity}
+  * Adapters {CourseAdapter}
+
+#### Data Binding Steps for Click Events
+1. Create a Button Layout 
+2. Create the ClickHandlerClass with onClick method
+3. Modify the layout xml file (<layout> <data> <variable>)
+4. Connect a DataBinding object with the handler object in the Activity 
+
+#### Spinner Steps using data binding
+1. Create a Spinner Layout (content_main.xml)
+2. Create a Spinner Item Layout that defines how the selected choice appears in the spinner (spinner_item.xml)
+3. Create an ArrayAdapter that receives the data source and provides the spinner choices. (MainActivity)
+4. Create the ClickHanlderClass with the onItemSelected method  (MainActivity)
+5. Modify the layout xml file (<layout> <data> <variable>) to bind the adapter attribute to the Spinner tag. (content_main.xml)
+6. Connect the DataBinding object with the handler object in the Activity  (MainActivity)
+
+
+#### RecyclerView using Data Binding
+1. Create  in the main_activity.xml an AdapterView (RecyclerView).
+2. Create  a custom layout for the items (recyclerview_item).
+3. Modify the layout xml file (<layout> <data> <variable>) to attach the object variable with the TextView layouts. 
+4. Create  a Custom Model Class to represent each of the items. A template for  the data we will pass (Course).
+5. Create a Custom Adapter that extends RecyclerView.Adapter<CustomAdapter.ViewHolder> (CustomAdapter).
+  * Data source
+  * ViewHolder Class
+  * Implement Override Methods
+  * Add click Event Listener in the ViewHolder constructor 
+
+#### Get result from an activity (start an activity and receive a result back)
+* From Main Activity start the Second Activity for a result back using startActivityForResult (MainActivity)
+* Return some value from Second Activity using setResult (AddEditActivity)
+* Collect data from the Main Activity using onActivityResult (MainActivity) 
+
+
