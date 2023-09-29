@@ -180,7 +180,7 @@
 * CoordinatorLayout: Layout that controls the animation and transactions of various child elements with one another
 
 
-#### MVVM steps
+**MVVM steps**
 
 * Model
     * Retrofit, remote data source. 
@@ -194,7 +194,8 @@
 * View
     * Activities (MainActivity.java,MovieActivity.java) 
 
-#### Parcel Steps
+**Parcel Steps**
+
 1. Create the object that Implements Parcelable (Movie.java,Result.java)
 2. Create Overridden Methods
     * writeToParcel
@@ -204,7 +205,8 @@
 
 
 
-#### Retrofit Steps
+**Retrofit Steps**
+
 * Model Class for the data service response (Result.java)
 * Retrofit Interface, it defines the possible HTTP methods (MovieDataService.java)
 * Retrofit Instance using SIngleton Pattern and GSON converter (RetrofitInstance.java).
@@ -215,13 +217,15 @@
     * Return a LiveData (MutableLiveData) with the data
 
 
-#### Bind a remote image
+**Bind a remote image**
 
 1. Inside the BaseObservable Model Class create a static binding adapter method @BindingAdapter (Movie.java)
 2. Create an ImageView layout with an attribute that matches the static binding adapter method
+3. Load the image with the Glide library
 
 
-#### Coordinator Layout using Scroll-Based Behavior
+**Coordinator Layout using Scroll-Based Behavior**
+
 ( https://blog.mindorks.com/using-coordinator-layout-in-android)
 
 - Add the CoordinatorLayout dependency and the material design components dependency
