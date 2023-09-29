@@ -163,4 +163,75 @@
 * Return some value from Second Activity using setResult (AddEditActivity)
 * Collect data from the Main Activity using onActivityResult (MainActivity) 
 
+## Movie Pro App
+
+**Description**: App that fetches online data from a Movie DB API (themoviedb.org) and displays the movies using CardView and RecyclerView, when the user clicks on any movie it will display the movie details in a different Activity.
+	
+**Android Topics**: 
+
+* Retrofit: Library to retrieve and upload data via a REST-based web service
+* GSON: A Java serialization/deserialization library to convert Java Objects into JSON and back.
+* Parcelable interface: Enables an object to be passed as a parameter from one activity to another.
+* Parcelable.Creator interface: It generates instance of your Parcelable class from a Parcel
+* jsonschema2pojo:  Generate Plain Old Java Objects from JSON or JSON-Schema.
+* SwipeRefreshLayout:  Implement the swipe-to-refresh UI pattern (MainAcivity.java) 
+* @BindingAdapter: Binding Adapters are responsible for making the appropriate framework calls to set values. A static binding adapter method with the BindingAdapter annotation lets you customize how a setter for an attribute is called.
+* Glide: fast and efficient open source media management and image loading framework
+* CoordinatorLayout: Layout that controls the animation and transactions of various child elements with one another
+
+
+#### MVVM steps
+
+* Model
+    * Retrofit, remote data source. 
+    * Model classes (Movie.java,Result.java) 
+    * Retrofit Interface (MovieDataService.java)
+    * Retrofit Instance (RetrofitInstance.java)
+    * Repository 
+* ViewModel 
+    * ViewModelActivity (ViewModelActivity.java)
+    * LiveData
+* View
+    * Activities (MainActivity.java,MovieActivity.java) 
+
+#### Parcel Steps
+1. Create the object that Implements Parcelable (Movie.java,Result.java)
+2. Create Overridden Methods
+    * writeToParcel
+    * describeContents
+3. Create a Constructor with a Parcel object to read the data from. 
+4. CREATOR field that implements Parcelable.Creator interface
+
+
+
+#### Retrofit Steps
+* Model Class for the data service response (Result.java)
+* Retrofit Interface, it defines the possible HTTP methods (MovieDataService.java)
+* Retrofit Instance using SIngleton Pattern and GSON converter (RetrofitInstance.java).
+* For each required HTTP request create a method in the repository (MovieRepository.java) 
+    * Get the Retrofit instance 
+    * Call the HTTP request
+    * Enqueue Callbacks 
+    * Return a LiveData (MutableLiveData) with the data
+
+
+#### Bind a remote image
+
+1. Inside the BaseObservable Model Class create a static binding adapter method @BindingAdapter (Movie.java)
+2. Create an ImageView layout with an attribute that matches the static binding adapter method
+
+
+#### Coordinator Layout using Scroll-Based Behavior
+( https://blog.mindorks.com/using-coordinator-layout-in-android)
+
+- Add the CoordinatorLayout dependency and the material design components dependency
+- Implement the Scroll-Based Behavior using:
+
+ 	  	   <CoordinatorLayout>
+ 	  	        <AppBarLayout>
+ 	  	            <CollapsingToolbarLayout>
+ 	  	                <ImageView>
+ 	  	                <Toolbar>
+
+
 
