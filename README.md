@@ -107,7 +107,7 @@
 
 ## Learning Management App
 
-**Description**: App that displays data from a database and  manages (create, update, delete) a list of courses for each category in a Spinner. App created using the MVVM pattern.
+**Description**: App that displays data from a local database and  manages (create, update, delete) a list of courses (RecyclerView) for each category (Spinner). App created using the MVVM pattern.
 	
 **Android Topics**: 
 * Room Database: Database, an abstraction layer over SQLite.
@@ -117,51 +117,89 @@
 * Data Binding: To bind UI components in layouts to data sources in your app.
 * Spinner: View used to select one value from a dropdown menu.
 * ItemTouchHelper. Utility to add ‘swipe to dismiss’ or ‘drag & drop’ for the RecyclerView 
+* DiffUtil: Class that finds the difference between two lists and provides the updated list as an output, used to notify updates to a RecyclerView Adapter.
 
-#### MVVM steps
+**MVVM steps**
 * Model
   * Room Database 
-    * Entities {Category,Course}
-    * DataAccessObjects {CourseDAO, CategoryDAO}
-    * Database (Singleton Pattern) {CourseDatabase}
-  * Repository {CourseShopRepository}
+    * Entities classes (Category.java,Course.java)
+    * DataAccessObjects interfaces (CourseDAO.java, CategoryDAO.java)
+    * Database using Singleton Pattern (CourseDatabase.java)
+  * Repository (CourseShopRepository.java)
 * ViewModel 
-  * ViewModelActivity {MainActivityViewModel}
+  * ViewModelActivity (MainActivityViewModel.java)
   * LiveData
 * View
-  * Activities {MainActivity,AddEditActivity}
-  * Adapters {CourseAdapter}
+  * Activities (MainActivity,AddEditActivity)
+  * Adapters (CourseAdapter)
 
-#### Data Binding Steps for Click Events
-1. Create a Button Layout 
-2. Create the ClickHandlerClass with onClick method
-3. Modify the layout xml file (<layout> <data> <variable>)
-4. Connect a DataBinding object with the handler object in the Activity 
 
-#### Spinner Steps using data binding
+**Data Binding Steps for Click Events**
+1. Create a Button Layout (activity_main.xml)
+2. Create the ClickHandlerClass with onClick method (MainActivity.java)
+3. Modify the layout xml file to bind the onClick method to the Button layout (activity_main.xml)
+
+ 	  	   <layout>
+ 	  	     <data>
+ 	  	       <variable>
+   *  Bind Button tag ‘onClick’ attribute with the variable method object @{}
+
+4. Connect the ViewDataBinding object with the Click Handler object (MainActivity.java)
+
+
+**Spinner Steps using data binding**
+
 1. Create a Spinner Layout (content_main.xml)
 2. Create a Spinner Item Layout that defines how the selected choice appears in the spinner (spinner_item.xml)
-3. Create an ArrayAdapter that receives the data source and provides the spinner choices. (MainActivity)
-4. Create the ClickHanlderClass with the onItemSelected method  (MainActivity)
-5. Modify the layout xml file (<layout> <data> <variable>) to bind the adapter attribute to the Spinner tag. (content_main.xml)
-6. Connect the DataBinding object with the handler object in the Activity  (MainActivity)
+3. Create a custom Model Class to represent each of the items, make it BaseObservable for binding purposes. (Category.java)
+
+    1. extends BaseObservable
+    2. Add @Bindable to the getters
+    3. Add notifyPropertyChanged(BR.att_name) to the getters
+
+4. Create an ArrayAdapter that receives the data source and provides the spinner choices. (MainActivity.java)
+5. Create the ClickHanlderClass with the onItemSelected method  (MainActivity.java)
+6. Modify the layout xml file (<layout> <data> <variable>) to bind the adapter attribute to the Spinner tag. (content_main.xml)
+
+ 	  	   <layout>
+ 	  	     <data>
+ 	  	       <variable>
+   *  Bind TextView tag ‘text’ attribute with the variable attribute object @{}
+7. Connect the ViewDataBinding object with the Click Handler object (MainActivity.java)
 
 
-#### RecyclerView using Data Binding
-1. Create  in the main_activity.xml an AdapterView (RecyclerView).
-2. Create  a custom layout for the items (recyclerview_item).
-3. Modify the layout xml file (<layout> <data> <variable>) to attach the object variable with the TextView layouts. 
-4. Create  a Custom Model Class to represent each of the items. A template for  the data we will pass (Course).
-5. Create a Custom Adapter that extends RecyclerView.Adapter<CustomAdapter.ViewHolder> (CustomAdapter).
-  * Data source
-  * ViewHolder Class
-  * Implement Override Methods
-  * Add click Event Listener in the ViewHolder constructor 
 
-#### Get result from an activity (start an activity and receive a result back)
+**RecyclerView using Data Binding**
+
+1. Create  in the layout an AdapterView, RecyclerView (content_main.xml).
+2. Create  a custom layout for the items (course_list_item.xml).
+3. Create  a Custom Model Class to represent each of the items. A template for  the data we will pass and make it BaseObservable for binding purposes (Course.java).
+    a. extends BaseObservable
+    b. Add @Bindable to the getters
+    c. Add notifyPropertyChanged(BR.att_name) to the setters
+4. Modify the layout xml file to bind the object variable with the TextView layouts (course_list_item.xml)
+
+ 	  	   <layout>
+ 	  	     <data>
+ 	  	       <variable>
+ 	  	   
+   *  Bind TextView tag ‘text’ attribute with the variable attribute object @{}
+5. Create a Custom Adapter that extends RecyclerView.Adapter<CustomAdapter.ViewHolder>  (CourseAdapter.java).
+    * Data source
+    * ViewHolder Class
+    * Implement Override Methods
+    * Add click Event Listener in the ViewHolder constructor 
+
+**Get result from an activity (start an activity and receive a result back)**
 * From Main Activity start the Second Activity for a result back using startActivityForResult (MainActivity)
 * Return some value from Second Activity using setResult (AddEditActivity)
 * Collect data from the Main Activity using onActivityResult (MainActivity) 
+
+**Diff Util used in the adapter**
+1. Create a class of DiffUtil.Callback (CourseDiffCallback.java)
+2. Update the dataset without using notifyDataSetChanged (CourseAdapter.java)
+3. Invoke dispatchUpdatesTo (CourseAdapter.java)
+
 
 ## Movie Pro App
 
@@ -203,7 +241,7 @@
 3. Create a Constructor with a Parcel object to read the data from. 
 4. CREATOR field that implements Parcelable.Creator interface
 
-
+	
 
 **Retrofit Steps**
 
