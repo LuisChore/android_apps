@@ -6,6 +6,7 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
+import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.learningapp.databinding.CourseListItemBinding;
@@ -19,15 +20,22 @@ public class CourseAdapter extends RecyclerView.Adapter<CourseAdapter.ViewHolder
 
     //(1) Data Source
     private ArrayList<Course> courses = new ArrayList<>();
-    public void setCourses(ArrayList<Course> courses) {
-        this.courses = courses;
+    public void setCourses(ArrayList<Course> newCourses) {
         // Steps to update RecyclerView using Room Database
         /*
             1. Call the database to do the operation
             2. Update the array that is shown in the UI
             3. Notify to the adapter it changed
          */
-        notifyDataSetChanged();
+        //this.courses = courses;
+        //notifyDataSetChanged();
+
+        // Steps using DiffUtil
+        final DiffUtil.DiffResult result =
+                DiffUtil.calculateDiff(new CourseDiffCallback(courses,newCourses),false);
+        courses = newCourses;
+        result.dispatchUpdatesTo(CourseAdapter.this);
+
     }
 
 
