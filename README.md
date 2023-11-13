@@ -274,6 +274,134 @@
  	  	            <CollapsingToolbarLayout>
  	  	                <ImageView>
  	  	                <Toolbar>
+ 	  	                
+ 	  	                
+## Contacts Manager App
+
+
+**Description**: App that displays Contacts (RecyclerView and Cardview)   from a local database, allowing to manage the data, create, delete and update contacts (Room). This application is created using the MVVM architecture and Data Binding library.
+
+	
+**Android Topics**: 
+
+* *Room Database*: Object Relational Database library, it provides an abstraction layer over SQLite
+    * Entity: Fundamental component that represents a table in the SQLite database
+    * Data Access Object: Interface that defines a set of methods for performing database operations on entities.
+    * Database: Abstract class that serves as the database holder
+* *Repository*: Class that gathers and manages multiple sources of data and provides an API used by ViewModel.
+* *ExecutorService*: Executor used to offload operations to background threads.
+* *Handler*: It allows you to post tasks to the main UI threads queue. 
+* *Runnable*: It defines a task that you want to run asynchronously on a separate thread
+* *ItemTouchHelper*: utility class on Android that provides support for handling touch gestures
+
+
+**MVVM steps**
+
+* Model
+    * Room Database (local data source) 
+        * Entity (Contacts.java) 
+        * Data Access Object (ContactDAO.java)
+        * Database (ContactDatabase.java)
+    * Repository 
+* ViewModel (MyViewModel.java)
+* View
+
+
+
+
+ 	
+
+
+
+**RoomDatabase steps**
+
+1. Include LiveData dependency 
+2. Add Room dependencies 
+3. Create entity classes 
+4. Create DAO interfaces
+    * Wrap the necessary return types in the DAO classes that use “@Query and SELECT” with LiveData 
+5. Create Database abstract class
+
+
+**Repository Steps**
+
+1. Create Repository class
+    * Room Database Source:
+        * Get a RoomDatabase instance in the Constructor.
+        * Have an object for each DAO and get an instance in the constructor
+        * Each method in the DAOs classes should be mentioned as a method in the repository.
+        * The methods calling database operations must be handled by ExecutorService, Handler & Runnable to use a background thread. 
+        * The necessary methods calling database queries must return LiveData wrappers. 
+
+
+**ViewModel Steps**
+
+1. Include ViewModel dependency
+*MyViewModel.java*
+
+2. Create a class extending AndroidViewModel
+3. Create the necessary LiveData objects
+4. Add the necessary methods provided by the Repository. 
+
+*MainActivity.java*
+
+5. Get a ViewModel instance using ViewModelProvider
+6. Add observers to the LiveData objects
+
+
+**RecyclerView steps with DataBinding**
+
+1.  Add DataBinding Dependency
+2. Create an AdapterView (RecyclerView) layout (activity_main.xml)
+3. Create a custom layout for the items (contact_list_item.xml)
+4. Create  a custom Model Class to represent each of the items, a template for  the data we will display in the RecyclerView. (Contacts.java)
+
+5. Modify the layout xml file to bind the Object Variable with the TextView Layout (contact_list_item.xml)
+
+        <layout>
+            <data>
+                <variable>
+* Bind Textview tag ‘text’ attribute with the variable attribute object @{}
+
+*MyAdapter.java*
+
+6. Create a Custom Adapter that extends RecyclerView.Adapter<CustomAdapter.ViewHolder> (MyAdapter.java).
+    * Data source
+    * ViewHolder Class using DataBinding
+        * Create a reference to DataBinding
+
+    * Overridden Methods using DataBinding
+        * onCreateViewHolder
+        * onBindViewHolder
+        * getItemCount()
+    * Data Source Setter
+        * Call notifyDataSetChanged()
+
+*MainActivity.java*
+
+7. Create a RecyclerView instance and a CustomAdapter instance
+8. Define a Layout Manager for the RecyclerView object
+9. Link the RecyclerView with the Adapter 
+10. Add data to the SourceData
+11. Notify changes to the RecyclerView via the Adapter
+
+
+**Data Binding Steps for Click Events**
+
+1. Create a Button Layout (activity_main.xml)
+2. Create the ClickHandler class with onClick(View) method (MainActivityClickHandlers.java)
+3. Modify the layout xml file to bind the onClick method to the Button layout (activity_main.xml)
+
+        <layout>
+            <data>
+                <variable>
+    * Bind Button tag ‘onClick’ attribute with the variable method object @{::}
+
+*MainActivity.java*
+
+4. Create a ClickHandler instance and create a reference to DataBinding
+5. Link the ViewDataBinding object with a ClickHandler object 
+
 
 
 
