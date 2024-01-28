@@ -1,5 +1,5 @@
 
-## Lucky Number App
+## [Lucky Number App](https://github.com/LuisChore/android_apps/tree/master/01LuckyNumberApp)
 
 **Description**: In the main screen the user enters their name, after clicking the button another screen opens with a lucky number assigned to the user and the option to share it.
 
@@ -9,7 +9,7 @@
 * Implicit Intent: Sharing information between applications.
 
 
-## Music Player App
+## [Music Player App](https://github.com/LuisChore/android_apps/tree/master/02MusicPlayerApp)
 
 **Description**: App that allows us to play media(Audio) files stored in the application resources directory with the help of  the Android Multimedia Framework. 
 
@@ -20,7 +20,7 @@
 * Seekbar(Widget): To display the progress of the media playing. 
 * Handler(postDelayed): To manage in a Thread the seekbar. 
 
-## Video Player App
+## [Video Player App](https://github.com/LuisChore/android_apps/tree/master/03VideoPlayerApp)
 
 **Description**: App that allows us to play videos either stored in the application resources directory or videos fetched from the web. 
 
@@ -29,7 +29,7 @@
 * VideoView (Widget): To display video content  from different sources. 
 * MediaController (View): To control the media player.
 
-## French Teacher App
+## [French Teacher App](https://github.com/LuisChore/android_apps/tree/master/04FrenchTeacherApp)
 
 **Description**: App to Learn the colors in  French using Audio Files.
 
@@ -39,7 +39,7 @@
 * raw/: To save raw files (audio).
 * Media Player: To control media files in Android Studio. 
 
-## World Cup App
+## [World Cup App](https://github.com/LuisChore/android_apps/tree/master/05WorldCupApp)
 
 **Description**: App that displays an interactive custom list of the countries that have won the  World Cup using ListView and  ArrayAdapter
 	
@@ -61,7 +61,7 @@
   * ViewHolder Class
   * Implement Override Methods
  
-## Vaccines App
+## [Vaccines App](https://github.com/LuisChore/android_apps/tree/master/06VaccinesApp)
 
 **Description**:  App that displays an interactive custom list of Vaccines using RecyclerView
 	
@@ -83,7 +83,7 @@
    * Implement Override Methods
 
 
-## Top Games App
+## [Top Games App](https://github.com/LuisChore/android_apps/tree/master/07TopGamesApp)
 
 **Description**:  App that displays a list of video games in a CardView application using RecyclerView, each item will be interactive using click events. 
 	
@@ -105,7 +105,7 @@
 * Add click event (inside the override method ‘onBindViewHolder’ in the CustomAdapter)
 
 
-## Learning Management App
+## [Learning Management App](https://github.com/LuisChore/android_apps/tree/master/08LearningApp)
 
 **Description**: App that displays data from a local database and  manages (create, update, delete) a list of courses (RecyclerView) for each category (Spinner). App created using the MVVM pattern.
 	
@@ -201,7 +201,7 @@
 3. Invoke dispatchUpdatesTo (CourseAdapter.java)
 
 
-## Movie Pro App
+## [Movie Pro App](https://github.com/LuisChore/android_apps/tree/master/09MoviesProApp)
 
 **Description**: App that fetches online data from a Movie DB API (themoviedb.org) and displays the movies using CardView and RecyclerView, when the user clicks on any movie it will display the movie details in a different Activity.
 	
@@ -276,7 +276,7 @@
  	  	                <Toolbar>
  	  	                
  	  	                
-## Contacts Manager App
+## [Contacts Manager App](https://github.com/LuisChore/android_apps/tree/master/10ContactsManagerApp)
 
 
 **Description**: App that displays Contacts (RecyclerView and Cardview)   from a local database, allowing to manage the data, create, delete and update contacts (Room). This application is created using the MVVM architecture and Data Binding library.
